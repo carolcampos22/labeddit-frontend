@@ -1,6 +1,6 @@
 import React from 'react'
 import { ButtonPost, PostsContainer } from './StylesPosts'
-import CardPost from '../components/post/CardPost'
+import CardPost from '../../components/post/CardPost'
 
 const Posts = () => {
   return (
