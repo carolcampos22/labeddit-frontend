@@ -9,7 +9,8 @@ function App() {
 
   return (
     <>
-      <Comments />
+      <Header />
+      <Login />
     </>
   )
 }
