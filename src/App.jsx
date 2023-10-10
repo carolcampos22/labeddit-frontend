@@ -1,18 +1,17 @@
 import './App.css'
 import Header from './components/header/Header'
-import Login from './components/login/Login'
-import SignUp from './components/signUp/SignUp'
-import Comments from './pages/comments/Comments'
-import Posts from './pages/posts/Posts'
+import { Router } from './router/Router'
 
 function App() {
 
   return (
     <>
       <Header />
-      <Login />
+      <Router/>
     </>
   )
 }
+
+
 
 export default App

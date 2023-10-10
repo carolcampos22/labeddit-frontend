@@ -2,8 +2,11 @@ import React from 'react'
 import logo from '../../assets/logo-1.png'
 import './StylesLogin.jsx'
 import { Button, ContainerLogin, CreateAccountButton, InputsLogin, Logo } from './StylesLogin.jsx'
+import { useNavigate } from 'react-router-dom'
+import { goToSignUpPage } from '../../router/coordinator'
 
 export const Login = () => {
+    const navigate = useNavigate()
     return (
         <ContainerLogin>
             <Logo>
@@ -17,7 +20,7 @@ export const Login = () => {
             </InputsLogin>
             <div>
                 <Button>Continuar</Button>
-                <CreateAccountButton>Criar uma conta!</CreateAccountButton>
+                <CreateAccountButton onClick={() => goToSignUpPage(navigate)}>Criar uma conta!</CreateAccountButton>
             </div>
         </ContainerLogin>
 
