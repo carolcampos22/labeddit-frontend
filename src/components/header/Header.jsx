@@ -1,11 +1,15 @@
 import React from 'react'
-import LogoEntrar from '../../assets/logo-entrar.png'
+import Logo2 from '../../assets/logo-2.png'
+import { HeaderContainer } from './StylesHeader'
+import { useNavigate } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({goToLoginPage}) => {
+  const navigate = useNavigate()
   return (
-    <div>
-        <img src={LogoEntrar} alt="Logo da Labenu" />
-    </div>
+    <HeaderContainer>
+        <img src={Logo2} alt="Logo da Labenu" />
+        <a onClick={() => goToLoginPage(navigate)} type='button'> Entrar</a>
+    </HeaderContainer>
   )
 }
 

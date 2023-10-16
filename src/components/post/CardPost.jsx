@@ -5,11 +5,11 @@ import ChatText from '../../assets/chat-text.svg'
 import { Comments, ContainerCardPost, LikesDislikes, LikesDislikesCommentsContainer } from './StylesCardPost'
 
 
-const CardPost = () => {
+const CardPost = ({creatorPost, content, likes, dislikes, comments}) => {
   return (
     <ContainerCardPost>
-      <p>Enviado por: labaluno83</p>
-      <h3>Por que a maioria dos desenvolvedores usam Linux? Ou as empresas de tecnologia usam Linux?</h3>
+      <p>Enviado por: {creatorPost}</p>
+      <h3>{content}</h3>
       <LikesDislikesCommentsContainer>
         <LikesDislikes>
           <button><img src={ArrowUp} /></button>

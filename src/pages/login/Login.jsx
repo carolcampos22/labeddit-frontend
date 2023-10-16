@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../assets/logo-1.png'
 import './StylesLogin.jsx'
 import { Button, ContainerLogin, CreateAccountButton, InputsLogin, Logo } from './StylesLogin.jsx'
 import { useNavigate } from 'react-router-dom'
-import { goToSignUpPage } from '../../router/coordinator'
+import { goToPostsPage, goToSignUpPage } from '../../router/coordinator'
 import { useForm } from "../../hooks/useForm"
+import { validateEmail, validatePassword } from '../../constants/constants'
+import { LoginUser } from '../../constants/constants'
 
 export const Login = () => {
     const navigate = useNavigate()
@@ -12,11 +14,25 @@ export const Login = () => {
         email: "",
         password: ""
     })
+    const [isEmailValid, setIsEmailValid] = useState(true)
+    const [isPasswordValid, setIsPasswordValid] = useState(true)
 
-    const onSubmit = (event) => {
+    const onSubmit = async (event) => {
         event.preventDefault()
         clearInputs()
-
+        setIsEmailValid(validateEmail(form.email))
+        setIsPasswordValid(validatePassword(form.password))
+        
+        try {
+            const {token} = isEmailValid && isPasswordValid && await LoginUser({
+                email: form.email,
+                password: form.password
+            })
+            localStorage.setItem("login-labeddit.token", token)
+            goToPostsPage(navigate)
+        } catch (error) {
+            console.log(error);
+        }
     }
     return (
         <ContainerLogin>
