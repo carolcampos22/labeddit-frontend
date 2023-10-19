@@ -5,27 +5,37 @@ import { ListPosts } from '../../constants/constants'
 import Header from '../../components/header/Header'
 import { useNavigate } from 'react-router-dom'
 import { goToCommentsPage } from '../../router/coordinator'
+import { Loading } from '../comments/StylesComments'
 
 
 
 const Posts = () => {
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate()
   const onClickComments = (idPost) => {
     
     goToCommentsPage(navigate, idPost)
   }
-  const [posts, setPosts] = useState([])
+  
   useEffect(() => {
     ListPosts()
       .then(data => {
         setPosts(data)
+        setLoading(false)
       })
       .catch(
         (error) => {
           console.log(error)
+          setLoading(false)
         }
       )
   }, [])
+
+ 
+  if (loading) {
+    return <Loading>Loading...</Loading>;
+  }
 
   return (
     <>

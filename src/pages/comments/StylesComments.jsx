@@ -18,3 +18,11 @@ export const CommentsContainer = styled.div`
         margin-top: 2vh;
     }
 `
+
+export const Loading = styled.div`
+    text-align: center;
+    font-weight: bold;
+    font-size: 3vh;
+    color: #FF6489;
+    margin-top: 40vh;
+`

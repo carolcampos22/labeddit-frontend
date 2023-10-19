@@ -1,4 +1,41 @@
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useLocation } from 'react-router-dom'; // Importe o hook useLocation
+import { Comments, ContainerCardPost, LikesDislikes, LikesDislikesCommentsContainer } from './StylesCardPost';
+import ArrowDown from '../../assets/arrow-down.svg'
+import ArrowUp from '../../assets/arrow-up.svg'
+import ChatText from '../../assets/chat-text.svg'
+
+const CardPost = ({ creatorPost, content, likes, dislikes, comments, id, onClickComments }) => {
+  const location = useLocation(); // Obtenha o caminho atual da URL
+  const isOnPostsPage = location.pathname === '/posts'; // Verifique se a página atual é a de Posts
+
+  return (
+    <ContainerCardPost>
+      <p>Enviado por: {creatorPost}</p>
+      <h3>{content}</h3>
+      <LikesDislikesCommentsContainer>
+        <LikesDislikes>
+          <button><img src={ArrowUp} alt="Up" /></button>
+          <span>{likes}</span>
+          <button><img src={ArrowDown} alt="Down" /></button>
+        </LikesDislikes>
+        {isOnPostsPage && ( // Condicional para renderizar o botão apenas na página de Posts
+          <Comments>
+            <button onClick={() => onClickComments(id)}>
+              <img src={ChatText} alt="Comment" />
+            </button>
+            <span>{comments}</span>
+          </Comments>
+        )}
+      </LikesDislikesCommentsContainer>
+    </ContainerCardPost>
+  );
+};
+
+export default CardPost;
+
+
+/*import { useNavigate } from 'react-router-dom'
 import ArrowDown from '../../assets/arrow-down.svg'
 import ArrowUp from '../../assets/arrow-up.svg'
 import ChatText from '../../assets/chat-text.svg'
@@ -30,4 +67,4 @@ const CardPost = ({creatorPost, content, likes, dislikes, comments, id, onClickC
   )
 }
 
-export default CardPost
+export default CardPost*/
