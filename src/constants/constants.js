@@ -29,3 +29,15 @@ export const ListPosts = async () => {
         )
     return data;
 }
+
+export const ListComments = async (id) => {
+    const {data} = await axios.get(
+        `${BASE_URL}/comments/${id}`,
+        {
+            headers: {
+                Authorization: localStorage.getItem("login-labeddit.token")
+            }
+        }
+        )
+    return data;
+}

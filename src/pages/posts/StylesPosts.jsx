@@ -5,7 +5,7 @@ export const PostsContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 10vw;
+    margin: 10vw;
     textarea{
         resize: none;
         width: 80vw;

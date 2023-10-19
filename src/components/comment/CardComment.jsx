@@ -5,12 +5,12 @@ import ArrowUp from '../../assets/arrow-up.svg'
 import ArrowDown from '../../assets/arrow-down.svg'
 
 
-const CardComment = () => {
+const CardComment = ({creatorComment, message, idComment, idPost}) => {
   return (
     
       <ContainerCardComment>
-      <p>Enviado por: labaluno12</p>
-      <h3>Não posso falar por todos, mas usar Linux ajudou meu pc a ter uma performance melhor (e evitou que eu precisasse comprar um novo)</h3>
+      <p>Enviado por: {creatorComment}</p>
+      <h3>{message}</h3>
       <LikesDislikesCommentsContainer>
         <LikesDislikes>
           <button><img src={ArrowUp} /></button>

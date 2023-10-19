@@ -1,11 +1,15 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import ArrowDown from '../../assets/arrow-down.svg'
 import ArrowUp from '../../assets/arrow-up.svg'
 import ChatText from '../../assets/chat-text.svg'
 import { Comments, ContainerCardPost, LikesDislikes, LikesDislikesCommentsContainer } from './StylesCardPost'
+import { goToCommentsPage } from '../../router/coordinator'
 
 
-const CardPost = ({creatorPost, content, likes, dislikes, comments}) => {
+
+const CardPost = ({creatorPost, content, likes, dislikes, comments, id, onClickComments}) => {
+  
+  
   return (
     <ContainerCardPost>
       <p>Enviado por: {creatorPost}</p>
@@ -17,7 +21,7 @@ const CardPost = ({creatorPost, content, likes, dislikes, comments}) => {
           <button><img src={ArrowDown} /></button>
         </LikesDislikes>
         <Comments>
-          <button><img src={ChatText} /></button><span>132</span>
+          <button onClick={() => onClickComments(id)}><img src={ChatText} /></button><span>132</span>
         </Comments>
       </LikesDislikesCommentsContainer>
 

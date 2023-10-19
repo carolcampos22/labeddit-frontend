@@ -31,7 +31,7 @@ export const Login = () => {
             localStorage.setItem("login-labeddit.token", token)
             goToPostsPage(navigate)
         } catch (error) {
-            console.log(error);
+            alert(error.response.data);
         }
     }
     return (
