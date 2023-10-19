@@ -1,13 +1,13 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom'; // Importe o hook useLocation
+import { useLocation } from 'react-router-dom'; 
 import { Comments, ContainerCardPost, LikesDislikes, LikesDislikesCommentsContainer } from './StylesCardPost';
 import ArrowDown from '../../assets/arrow-down.svg'
 import ArrowUp from '../../assets/arrow-up.svg'
 import ChatText from '../../assets/chat-text.svg'
 
 const CardPost = ({ creatorPost, content, likes, dislikes, comments, id, onClickComments }) => {
-  const location = useLocation(); // Obtenha o caminho atual da URL
-  const isOnPostsPage = location.pathname === '/posts'; // Verifique se a página atual é a de Posts
+  const location = useLocation(); 
+  const isOnPostsPage = location.pathname === '/posts'; 
 
   return (
     <ContainerCardPost>

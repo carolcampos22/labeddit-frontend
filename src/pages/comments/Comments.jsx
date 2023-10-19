@@ -48,7 +48,6 @@ const Comments = () => {
         dislikes={post.dislikes}
         comments={post.comments}
         id={post.id}
-        // onClickComments={onClickComments}
       />}
       })}
       
@@ -72,8 +71,3 @@ const Comments = () => {
 
 export default Comments;
 
-//create post
-//create comment
-//like/dislike
-//comments 
-//responsividade

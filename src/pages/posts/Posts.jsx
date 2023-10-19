@@ -67,3 +67,10 @@ const Posts = () => {
 }
 
 export default Posts
+
+//create post
+//create comment
+//like/dislike
+//comments 
+//responsividade
+//validações de nickname, email e password
