@@ -1,22 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonPost, PostsContainer } from './StylesPosts'
 import CardPost from '../../components/post/CardPost'
-import { ListPosts } from '../../constants/constants'
+import { AddPost, ListPosts } from '../../constants/constants';
 import Header from '../../components/header/Header'
 import { useNavigate } from 'react-router-dom'
 import { goToCommentsPage } from '../../router/coordinator'
 import { Loading } from '../comments/StylesComments'
+import { useForm } from '../../hooks/useForm'
 
 
 
 const Posts = () => {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true);
+  const [form, onChangeInputs, clearInputs] = useForm({
+    content: "",
+    
+})
   const navigate = useNavigate()
   const onClickComments = (idPost) => {
     
     goToCommentsPage(navigate, idPost)
   }
+
+  const onSubmit = async (event) => {
+    event.preventDefault()
+    clearInputs()
+    
+    
+    try {
+        const {token} = await AddPost({
+          content: form.content,
+            
+        })
+        localStorage.getItem("login-labeddit.token", token)
+        alert("Post enviado!")
+        
+    } catch (error) {
+        alert(error.response.data);
+        console.log(error)
+    }
+}
   
   useEffect(() => {
     ListPosts()
@@ -30,7 +54,7 @@ const Posts = () => {
           setLoading(false)
         }
       )
-  }, [])
+  }, [posts])
 
  
   if (loading) {
@@ -42,8 +66,14 @@ const Posts = () => {
       <Header />
       <PostsContainer>
 
-        <textarea placeholder='Escreva seu post...'></textarea>
-        <ButtonPost>Postar</ButtonPost>
+        <textarea 
+          name='content'
+          value={form.content}
+          onChange={onChangeInputs}
+          placeholder='Escreva seu post...'
+          
+          ></textarea>
+        <ButtonPost type='submit' onClick={onSubmit}>Postar</ButtonPost>
         <div>
           {posts.map((post, index) => {
             return (
@@ -68,7 +98,7 @@ const Posts = () => {
 
 export default Posts
 
-//create post
+
 //create comment
 //like/dislike
 //comments 
