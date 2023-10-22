@@ -54,3 +54,16 @@ export const AddPost = async (body) => {
         )
     return data;
 }
+
+export const AddComment = async (body, id) => {
+    const {data} = await axios.post(
+        `${BASE_URL}/comments/${id}`,
+        body,
+        {
+            headers: {
+                Authorization: localStorage.getItem("login-labeddit.token")
+            }
+        }
+        )
+    return data;
+}

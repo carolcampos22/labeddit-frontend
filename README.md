@@ -7,6 +7,9 @@ Link para o repositório back-end: https://github.com/carolcampos22/labeddit-bac
  - React.js
  - Styled-components
 
+### Site 
+https://labeddit-frontend-delta.vercel.app
+
 ### Instalação
 Clone o repositório:
  ```bash
@@ -36,3 +39,4 @@ npm run start
 #ou com yarn:
 yarn start
 ```
+
