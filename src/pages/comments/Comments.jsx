@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AddComment, ListComments, ListPosts } from '../../constants/constants';
 import CardComment from '../../components/comment/CardComment';
 import CardPost from '../../components/post/CardPost';
@@ -7,6 +7,7 @@ import { CommentsContainer, Loading } from './StylesComments';
 import { ButtonPost } from '../posts/StylesPosts';
 import Header from '../../components/header/Header';
 import { useForm } from '../../hooks/useForm';
+import { useProtectedPage } from '../../hooks/useProtectedPage';
 
 const Comments = () => {
   const { id } = useParams();
@@ -16,6 +17,8 @@ const Comments = () => {
     message: "",
     
 })
+const navigate = useNavigate()
+useProtectedPage(navigate)
 
 const onSubmit = async (event) => {
   event.preventDefault()
@@ -62,7 +65,7 @@ const onSubmit = async (event) => {
 
   return (
     <CommentsContainer>
-      <Header/>
+    
       {posts.map((post, index) => {
         if(post.id === id){
         return <CardPost
@@ -96,72 +99,7 @@ const onSubmit = async (event) => {
 
 export default Comments;
 
-//create comment
 
-//like/dislike
-//comments 
-//responsividade
-//validações de nickname, email e password
 
-/**const Posts = () => {
-  const [posts, setPosts] = useState([])
-  const [loading, setLoading] = useState(true);
-  
-  const navigate = useNavigate()
-  const onClickComments = (idPost) => {
-    
-    goToCommentsPage(navigate, idPost)
-  }
 
-  
-  
-  useEffect(() => {
-    ListPosts()
-      .then(data => {
-        setPosts(data)
-        setLoading(false)
-      })
-      .catch(
-        (error) => {
-          console.log(error)
-          setLoading(false)
-        }
-      )
-  }, [posts])
 
- 
-  if (loading) {
-    return <Loading>Loading...</Loading>;
-  }
-
-  return (
-    <>
-      <Header />
-      <PostsContainer>
-
-        <textarea 
-          name='content'
-          value={form.content}
-          onChange={onChangeInputs}
-          placeholder='Escreva seu post...'
-          
-          ></textarea>
-        <ButtonPost type='submit' onClick={onSubmit}>Postar</ButtonPost>
-        <div>
-          {posts.map((post, index) => {
-            return (
-              <CardPost
-                key={index}
-                creatorPost={post.creator.nickname}
-                content={post.content}
-                likes={post.likes}
-                dislikes={post.dislikes}
-                comments={post.comments}
-                id={post.id}
-                onClickComments={onClickComments}
-              />
-            )
-          })}
-
-        </div>
-      </PostsContainer> */

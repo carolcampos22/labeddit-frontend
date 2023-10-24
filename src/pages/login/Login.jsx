@@ -8,7 +8,7 @@ import { useForm } from "../../hooks/useForm"
 import { validateEmail, validatePassword } from '../../constants/constants'
 import { LoginUser } from '../../constants/constants'
 
-export const Login = () => {
+export const Login = ({setIsLoggedIn}) => {
     const navigate = useNavigate()
     const [form, onChangeInputs, clearInputs] = useForm({
         email: "",
@@ -30,6 +30,7 @@ export const Login = () => {
             })
             localStorage.setItem("login-labeddit.token", token)
             goToPostsPage(navigate)
+            setIsLoggedIn(true)
         } catch (error) {
             alert(error.response.data);
         }

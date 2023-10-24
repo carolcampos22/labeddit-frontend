@@ -14,9 +14,10 @@ const CardPost = ({ creatorPost, content, likes, dislikes, comments, id, onClick
       <p>Enviado por: {creatorPost}</p>
       <h3>{content}</h3>
       <LikesDislikesCommentsContainer>
+        
         <LikesDislikes>
           <button><img src={ArrowUp} alt="Up" /></button>
-          <span>{likes}</span>
+          <span>{likes - dislikes}</span>
           <button><img src={ArrowDown} alt="Down" /></button>
         </LikesDislikes>
         {isOnPostsPage && ( // Condicional para renderizar o botão apenas na página de Posts

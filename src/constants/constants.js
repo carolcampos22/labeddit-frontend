@@ -67,3 +67,16 @@ export const AddComment = async (body, id) => {
         )
     return data;
 }
+
+export const LikeOrDislike = async (body, id) => {
+    const {data} = await axios.put(
+        `${BASE_URL}/posts/${id}/like`,
+        body,
+        {
+            headers: {
+                Authorization: localStorage.getItem("login-labeddit.token")
+            }
+        }
+        )
+    return data;
+}
