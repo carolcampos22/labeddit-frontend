@@ -14,15 +14,14 @@ export const HeaderContainer = styled.div`
         
         
     }
-    button{
-        width: 50vw;
-    }
+   
 
     a{
         text-decoration: none;
         text-align: center;
         font-weight: bold;
         margin-top: 5vh;
+        color: blue;
         
     }
 `

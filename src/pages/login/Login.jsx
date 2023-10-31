@@ -8,71 +8,84 @@ import { useForm } from "../../hooks/useForm"
 import { validateEmail, validatePassword } from '../../constants/constants'
 import { LoginUser } from '../../constants/constants'
 
-export const Login = ({setIsLoggedIn}) => {
-    const navigate = useNavigate()
+export const Login = ({ setIsLoggedIn }) => {
+    const navigate = useNavigate();
     const [form, onChangeInputs, clearInputs] = useForm({
-        email: "",
-        password: ""
-    })
-    const [isEmailValid, setIsEmailValid] = useState(true)
-    const [isPasswordValid, setIsPasswordValid] = useState(true)
-
+      email: "",
+      password: ""
+    });
+    const [isEmailValid, setIsEmailValid] = useState(true);
+    const [isPasswordValid, setIsPasswordValid] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+  
     const onSubmit = async (event) => {
-        event.preventDefault()
-        clearInputs()
-        setIsEmailValid(validateEmail(form.email))
-        setIsPasswordValid(validatePassword(form.password))
+      event.preventDefault();
+      clearInputs();
+      setIsEmailValid(validateEmail(form.email));
+      setIsPasswordValid(validatePassword(form.password));
+  
+      if (isEmailValid && isPasswordValid) {
         
+        setIsLoading(true);
+  
         try {
-            const {token} = isEmailValid && isPasswordValid && await LoginUser({
-                email: form.email,
-                password: form.password
-            })
-            localStorage.setItem("login-labeddit.token", token)
-            goToPostsPage(navigate)
-            setIsLoggedIn(true)
+          const { token } = await LoginUser({
+            email: form.email,
+            password: form.password
+          });
+  
+          localStorage.setItem("login-labeddit.token", token);
+  
+          setIsLoading(false);
+  
+          goToPostsPage(navigate);
+          setIsLoggedIn(true);
         } catch (error) {
-            alert(error.response.data);
+          setIsLoading(false); 
+          alert(error.response.data);
         }
-    }
+      }
+    };
+  
     return (
-        <ContainerLogin>
-            <Logo>
-                <img src={logo} />
-                <p>O projeto de rede social da Labenu</p>
-            </Logo>
-            <InputsLogin>
-                <form onSubmit={onSubmit}>
-                <input 
-                    type='email'
-                    value={form.email}
-                    name='email'
-                    onChange={onChangeInputs} 
-                    title='Insira um e-mail válido' 
-                    placeholder='E-mail'
-                    required
-                ></input>
-                <br />
-                <input 
-                    placeholder='Senha'
-                    type='password'
-                    name='password'
-                    value={form.password}
-                    onChange={onChangeInputs}
-                    minLength={6}
-                    required
-                                    
-                ></input>
-                </form>
-            </InputsLogin>
-            <div>
-                <Button type='submit' onClick={onSubmit}>Continuar</Button>
-                <CreateAccountButton onClick={() => goToSignUpPage(navigate)}>Criar uma conta!</CreateAccountButton>
-            </div>
-        </ContainerLogin>
+      <ContainerLogin>
+        <Logo>
+          <img src={logo} alt="Logo" />
+          <p>O projeto de rede social da Labenu</p>
+        </Logo>
+        <InputsLogin>
+          <form onSubmit={onSubmit}>
+            <input
+              type="email"
+              value={form.email}
+              name="email"
+              onChange={onChangeInputs}
+              title="Insira um e-mail válido"
+              placeholder="E-mail"
+              required
+            ></input>
+            <br />
+            <input
+              placeholder="Senha"
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={onChangeInputs}
+              minLength={6}
+              required
+            ></input>
+          </form>
+        </InputsLogin>
+        <div>
+          <Button type="submit" onClick={onSubmit}>
+            {isLoading ? 'Carregando...' : 'Continuar'}
+          </Button>
+          <CreateAccountButton onClick={() => goToSignUpPage(navigate)}>
+            Criar uma conta!
+          </CreateAccountButton>
+        </div>
+      </ContainerLogin>
+    );
+  };
 
-    )
-}
-
-export default Login
-
+  export default Login;

@@ -18,6 +18,7 @@ const SignUp = () => {
   const [isNameValid, setIsNamedValid] = useState(true)
   const [isEmailValid, setIsEmailValid] = useState(true)
   const [isPasswordValid, setIsPasswordValid] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   
 
   const onSubmit = async (event) => {
@@ -29,16 +30,20 @@ const SignUp = () => {
     
 
     try {
+      setIsLoading(true);
+  
       const { token } = isNameValid && isEmailValid && isPasswordValid && await SignUpUser({
         nickname: form.nickname,
         email: form.email,
         password: form.password
       })
       localStorage.setItem("login-labeddit.token", token)
+      setIsLoading(false)
       goToPostsPage(navigate)
 
     } catch (error) {
       console.log(error);
+      alert(error.response.data[0].message)
     }
   }
 
@@ -76,9 +81,11 @@ const SignUp = () => {
         <p>Ao continuar, você concorda com o nosso <a href='#'>Contrato de Usuário</a> e nossa <a href='#'>Política de Privacidade</a></p><br />
         <input type='checkbox'></input> <span>Eu concordo em receber e-mails sobre coisas legais no LabEddit</span>
       </Texts>
-      <Button onClick={onSubmit}>Cadastrar</Button>
+      <Button onClick={onSubmit}>{isLoading ? "Carregando..." : "Cadastrar"}</Button>
     </SignUpContainer>
   )
 }
 
 export default SignUp
+
+

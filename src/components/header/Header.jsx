@@ -16,12 +16,12 @@ const Header = ({isLoggedIn, setIsLoggedIn}) => {
     goToLoginPage(navigate)
   }
 
-  const buttonText = isLoggedIn ? "Sair" : "Entrar"
+  const buttonText = isLoggedIn ? "Logout" : "Entrar"
 
   return (
     <HeaderContainer>
         <img src={Logo2} alt="Logo da Labenu" />
-        <button onClick={buttonAction} type='button'>{buttonText}</button>
+        <a onClick={buttonAction} type='button'>{buttonText}</a>
     </HeaderContainer>
   )
 }

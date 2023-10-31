@@ -11,13 +11,13 @@ const CardComment = ({creatorComment, message, idComment, idPost}) => {
       <ContainerCardComment>
       <p>Enviado por: {creatorComment}</p>
       <h3>{message}</h3>
-      <LikesDislikesCommentsContainer>
+      {/* <LikesDislikesCommentsContainer>
         <LikesDislikes>
           <button><img src={ArrowUp} /></button>
           <span>1.2K</span>
           <button><img src={ArrowDown} /></button>
         </LikesDislikes>
-      </LikesDislikesCommentsContainer>
+      </LikesDislikesCommentsContainer> */}
 
 
     </ContainerCardComment>
