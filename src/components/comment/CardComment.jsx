@@ -1,25 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { LikesDislikes, LikesDislikesCommentsContainer } from '../post/StylesCardPost'
 import { ContainerCardComment } from './StylesCardComment'
 import ArrowUp from '../../assets/arrow-up.svg'
 import ArrowDown from '../../assets/arrow-down.svg'
+import { LikeOrDislike } from '../../constants/constants'
 
 
-const CardComment = ({creatorComment, message, idComment, idPost}) => {
+const CardComment = ({creatorComment, message}) => {
+  
   return (
     
       <ContainerCardComment>
       <p>Enviado por: {creatorComment}</p>
       <h3>{message}</h3>
-      {/* <LikesDislikesCommentsContainer>
-        <LikesDislikes>
-          <button><img src={ArrowUp} /></button>
-          <span>1.2K</span>
-          <button><img src={ArrowDown} /></button>
-        </LikesDislikes>
-      </LikesDislikesCommentsContainer> */}
-
-
+      
     </ContainerCardComment>
     
   )

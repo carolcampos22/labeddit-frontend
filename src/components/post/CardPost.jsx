@@ -23,7 +23,7 @@ const CardPost = ({ creatorPost, content, likes, dislikes, comments, id, onClick
       console.error(error);
     }
   };
-
+  
   return (
     <ContainerCardPost>
       <p>Enviado por: {creatorPost}</p>

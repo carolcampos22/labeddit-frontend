@@ -11,6 +11,15 @@ export const HeaderContainer = styled.div`
         width: 15vw;
         margin-left: 32vw;
         margin-top: 5vh;
+
+        @media (min-width: 950px){
+            width: 10vw;
+        }
+
+        @media (min-width: 1200px){
+            width: 7vw;
+            margin-bottom: -7vh;
+        }
         
         
     }
@@ -21,7 +30,10 @@ export const HeaderContainer = styled.div`
         text-align: center;
         font-weight: bold;
         margin-top: 5vh;
-        color: blue;
-        
+        color: blue;        
+    }
+
+    a:hover{
+        cursor: pointer;
     }
 `

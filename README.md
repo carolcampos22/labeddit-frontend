@@ -1,16 +1,13 @@
 # Labeddit - Front-end
 
-Este é o repositório fron-end do projeto fullstack LabEddit, uma rede social no estilo Reddit, criado no bootcamp da Labenu.
+Este é o repositório front-end do projeto fullstack LabEddit. É um projeto mobile first de uma rede social no estilo Reddit, criado no bootcamp da Labenu.
 Link para o repositório back-end: https://github.com/carolcampos22/labeddit-backend
 
-### Tecnologias utilizadas
+## Tecnologias utilizadas
  - React.js
  - Styled-components
 
-### Site 
-https://labeddit-frontend-delta.vercel.app
-
-### Instalação
+## Instalação
 Clone o repositório:
  ```bash
  git clone https://github.com/carolcampos22/labeddit-frontend
@@ -40,3 +37,28 @@ npm run start
 yarn start
 ```
 
+## Site 
+https://labeddit-frontend-delta.vercel.app
+
+## Layout
+
+1. Página de login:
+
+![](./src//assets//screenshots/login-page.png)
+
+2. Página de cadastro:
+
+![](./src/assets/screenshots/signup-page.png)
+
+3. Página de posts:
+
+![](./src/assets/screenshots/posts-page.png)
+
+4. Página de comentários:
+
+![](./src/assets/screenshots/comments-page.png)
+
+## Autora
+
+#### Carolina Mendes - Web developer
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-000?style=for-the-badge&logo=linkedin&logoColor=0E76A8)](https://www.linkedin.com/in/dev-carolina-mendes/)
