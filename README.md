@@ -58,6 +58,12 @@ https://labeddit-frontend-delta.vercel.app
 
 ![](./src/assets/screenshots/comments-page.png)
 
+## Próximos passoa
+- Responsividade nas páginas de posts e de comentários
+- Adicionar header
+- Adicionar botões para facilitar a navegação entre as páginas
+- Melhorias na estilização
+
 ## Autora
 
 #### Carolina Mendes - Web developer
