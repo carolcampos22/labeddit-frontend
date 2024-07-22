@@ -2,14 +2,28 @@ import styled from "styled-components";
 
 export const SignUpContainer = styled.div`
     h1{
-        margin-top: 2vh;
+        margin-top: 5vh;
         margin-left: 8vw;
         color: #373737;
+
+        @media (max-width: 3000px) {
+        margin-top: 8vh;
+        margin-left: 27vw;
+        margin-bottom: -2vh;
+        width: 50vw;
+
+    }
     }
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 3000px) {
+        width: 30vw;
+        margin-left: 35vw;
+
+    }
     
 `
 
@@ -18,15 +32,22 @@ export const InputsSignUpContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items-center;
+    align-items: center;
     gap: 5px;
+    margin-top: 10vh;
 
     input{
         width: 80vw;
         height: 6vh;
         border: 1px solid lightgray;
         padding-left: 3vw;
+
+        @media (max-width: 3000px) {
+        width: 30vw;
     }
+    }
+
+    
 `
 
 export const InputsSignUp = styled.div`
@@ -40,6 +61,7 @@ export const Texts = styled.div`
     a{
         text-decoration: none;
     }
+    
 `
 
 export const Button = styled.button`
@@ -57,5 +79,9 @@ export const Button = styled.button`
    &:hover{
     cursor: pointer;
    }
+
+   @media (max-width: 3000px) {
+        width: 30vw;
+    }
 
 `

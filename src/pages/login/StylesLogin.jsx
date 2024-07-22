@@ -7,6 +7,12 @@ export const ContainerLogin = styled.div`
     align-items: center;
     text-align: center;
     margin-top: 10vh;
+   
+    @media (max-width: 3000px) {
+        width: 30vw;
+        margin-left: 33vw;
+
+    }
     
 `
 
@@ -24,6 +30,14 @@ export const InputsLogin = styled.div`
         height: 6vh;
         border: 1px solid lightgray;
         padding-left: 3vw;
+
+        @media (max-width: 3000px) {
+        width: 30vw;
+    }
+    }
+
+    @media (max-width: 3000px) {
+        width: 30vw;
     }
 `
 
@@ -43,6 +57,10 @@ export const Button = styled.button`
     cursor: pointer;
    }
 
+   @media (max-width: 3000px) {
+        width: 30vw;
+    }
+
 `
 
 export const CreateAccountButton = styled.button`
@@ -60,4 +78,8 @@ export const CreateAccountButton = styled.button`
         cursor: pointer;
         background-color: orange;
        }
+
+       @media (max-width: 3000px) {
+        width: 30vw;
+    }
 `
